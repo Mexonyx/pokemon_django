@@ -8,5 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <ul>
+      {% for pokemon in pokemonList %}
+      <li>{{ pokemon.name }}</li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>
