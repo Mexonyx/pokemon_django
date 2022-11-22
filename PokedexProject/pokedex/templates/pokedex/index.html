@@ -1,30 +1,47 @@
 {% load static %}
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="{% static 'myfirst.css' %}" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
-    ul {
-    list-style-type: none;
-    }
-  </style>
-  <body>
-    <ul>
-      {% for pokemon in pokemonList %}
-      <li>
-        <a href="pokedex/detailed/{{ pokemon.id }}">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PokeDex</title>
+        <link rel="stylesheet" href="{% static 'pokedex/index.css' %}">
+        <link rel="stylesheet" href="{% static 'pokedex/listStyle.css' %}">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-        {{ pokemon.name }}
-        </a>
 
-      </li>
-      {% endfor %}
+    </head>
+    <body>
+      
+        <nav class="header">
+        <center>
+        <header>
+            <ul>
+                <li><a class="links" href="#user"><button class="equip" type="button">+ Créer une équipe</button></a></li>
+            </ul>
+        </header>
 
-    </ul>
+            <div class="logo">
+                <h1> Recherche </h1>
+            </div>
+            <div class="bar">
+                <input class="searchbar" type="text" title="Search">
+                <a href="#" title="Search Pokemon !"><i class="searchIcon uil-search "></i></a>
+            </div>
+        </nav>
+        <nav class="content">
+            <nav class="main">
+                <div class="wrapper">
+                    {% for pokemon in pokemonList %}
+                    <div>
+                      {{ pokemon.name }}
+                      <img src="{{pokemon.urlImage}}">
+                    </div>
+                    {% endfor %}
+                </div>
+        </nav>
+        </nav>
 
-  </body>
+    </body>
+
+
 </html>
+
