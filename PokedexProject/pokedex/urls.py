@@ -4,4 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.pokedex, name="pokedex"),
+    path('pokemonsTeams', views.pokemonTeams, name="pokemonsTeams"),
+    path('createTeam', views.createTeam, name="createTeam")
 ]

@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="{% static 'myfirst.css' %}" />
@@ -8,11 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    ul {
+    list-style-type: none;
+    }
+  </style>
   <body>
     <ul>
       {% for pokemon in pokemonList %}
-      <li>{{ pokemon.name }}</li>
+      <li>
+        {{ pokemon.name }}
+      </li>
       {% endfor %}
     </ul>
+  <button onclick="location.href='{% url 'pokemonTeams' %}'">Créer des équipes</button>
   </body>
 </html>

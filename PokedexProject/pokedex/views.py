@@ -4,31 +4,36 @@ from .models import Pokemon
 import requests
 # Create your views here.
 
-def pokedex(request):
+def getListPokemons():
     url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
     r = requests.get(url)
-    print(r)
     jsonRequest = r.json()
     listpokemon = []
-    
+
     for aPokemon in jsonRequest['results']:
         urlDetailPokemon = aPokemon['url']
         result = requests.get(urlDetailPokemon)
         detailPokemonJson = result.json()
+        listpokemon.append(Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
+                                   urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
+                                   type=detailPokemonJson['types'][0]['type']['name']))
 
-        
-        typesPokemon = ""
-        # if properties == "types":
-        #     for type in properties['types']:
-        #         typesPokemon += type['type']['name']
-        # if properties == "id":
-        #     idPokemon = properties['id']
-        # if properties == "sprites":
-        #     imageDetailPokemon = properties['sprites']['other']['official-artwork']['front_default']
-        # if properties == "types":
-        #     typeDetailPokemon = properties['types']
-        listpokemon.append(Pokemon(id=detailPokemonJson['id'], name = detailPokemonJson['name'],urlImage = detailPokemonJson['sprites']['other']['official-artwork']['front_default'], type = detailPokemonJson['types'][0]['type']['name']))
+    return listpokemon
 
-    context = {"pokemonList" : listpokemon} 
-
+def pokedex(request):
+    pokemonList = getListPokemons()
+    context = {"pokemonList" : pokemonList}
     return render(request,'pokedex/index.html', context)
+
+
+def pokemonTeams(request):
+
+    return render(request, 'pokedex/myTeams.html')
+
+def createTeam(request):
+    listPokemon = getListPokemons()
+
+
+    context = {"pokemonList" : listPokemon}
+
+    return render(request, 'pokedex/createTeam.html', context)
