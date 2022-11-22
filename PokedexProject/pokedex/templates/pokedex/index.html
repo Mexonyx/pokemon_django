@@ -31,9 +31,10 @@
             <nav class="main">
                 <div class="wrapper">
                     {% for pokemon in pokemonList %}
-                    <div>
+                    <div><a href="pokedex/detailed/{{pokemon.id}}" style="text-decoration:none;">
                       {{ pokemon.name }}
                       <img src="{{pokemon.urlImage}}">
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
