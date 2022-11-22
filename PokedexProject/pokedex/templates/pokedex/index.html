@@ -16,10 +16,15 @@
     <ul>
       {% for pokemon in pokemonList %}
       <li>
+        <a href="pokedex/detailed/{{ pokemon.id }}">
+
         {{ pokemon.name }}
+        </a>
+
       </li>
       {% endfor %}
+
     </ul>
-  <button onclick="location.href='{% url 'pokemonTeams' %}'">Créer des équipes</button>
+
   </body>
 </html>
