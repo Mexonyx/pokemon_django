@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.pokedex, name="pokedex"),
+    path('pokedex/detailed/<int:idPokemon>', views.detailedPokemon, name ="detailedPokemon")
 ]
