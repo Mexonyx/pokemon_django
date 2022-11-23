@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def getListPokemons():
-    url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
+    url = "https://pokeapi.co/api/v2/pokemon/?limit=4"
     r = requests.get(url)
     jsonRequest = r.json()
     listpokemon = []
@@ -17,7 +17,8 @@ def getListPokemons():
         detailPokemonJson = result.json()
         listpokemon.append(Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
                                    urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
-                                   type=detailPokemonJson['types'][0]['type']['name']))
+                                   type=detailPokemonJson['types'][0]['type']['name'], 
+                                   weight=detailPokemonJson['weight'])),
 
     return listpokemon
 
@@ -41,6 +42,14 @@ def detailedPokemon(request, idPokemon):
     context = {"pokemon": thePokemon}
     return render(request, "pokedex/detailedPokemon.html" , context)
 
+def searchBar(request):
+    allPokemon = getListPokemons()
+    filteredPokemonList = []
+    for pokemon in allPokemon:
+        if request.GET.get('search') in pokemon.name:
+            filteredPokemonList.append(pokemon)
+    context = {"pokemonList" : filteredPokemonList}
+    return render(request, "pokedex/index.html", context)
 
 
 def pokemonTeams(request):
