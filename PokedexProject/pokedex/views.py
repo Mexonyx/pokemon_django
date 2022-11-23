@@ -9,8 +9,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def getListPokemons(pageNumber):
-
-    pagination = pageNumber*20
+    pagination = (pageNumber-1) * 20
     url = "https://pokeapi.co/api/v2/pokemon/?offset=" + str(pagination) + "&limit=20"
     r = requests.get(url)
     jsonRequest = r.json()
@@ -39,9 +38,27 @@ def getOnePokemon(idPokemon):
     return thePokemon
 
 
-def pokedex(request, pageNumber=0):
+def pokedex(request, pageNumber=1):
     pokemonList = getListPokemons(pageNumber)
-    context = {"pokemonList": pokemonList, "pageNumber": pageNumber}
+
+    prevPage = pageNumber-1
+    prevPage2nd = pageNumber - 2
+    prevPage3rd = pageNumber - 3
+
+    nextPage = pageNumber + 1
+    nextPage2nd = pageNumber + 2
+    nextPage3rd = pageNumber + 3
+
+    context = {"pokemonList": pokemonList,
+               "pageNumber": pageNumber,
+               "nextPage": nextPage,
+               "nextPage2nd": nextPage2nd,
+               "nextPage3rd": nextPage3rd,
+               "prevPage": prevPage,
+               "prevPage2nd": prevPage2nd,
+               "prevPage3rd": prevPage3rd
+               }
+
     return render(request, 'pokedex/index.html', context)
 
 
