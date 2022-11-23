@@ -29,7 +29,8 @@
                 <div class="wrapper">
                     {% for pokemon in pokemonList %}
                     <div class="listCard">
-                        <a href="pokedex/detailed/{{pokemon.id}}" style="text-decoration:none;">
+                        <button onclick="location.href='{% url 'detailedPokemon' pokemon.id %}'" style="text-decoration:none; background-color:transparent; border:none; cursor:pointer; font-weight:bold; font-family: 'Montserrat', sans-serif;
+                        ">
                             <div class="name">{{ pokemon.name }}</div>
                             <img src="{{pokemon.urlImage}}">
                             <div class="typpe">{{ pokemon.type }}</div>
@@ -37,8 +38,12 @@
                     </div>
                     {% endfor %}
                 </div>
+
+                {% if pageNumber != -1 %}
+                <div class="pagination">
+
                     {% if pageNumber > 1 %}
-                        <input type="button" value="Previous Page" onclick="location.href='{% url 'previousPage' prevPage  %}'"  />
+                        <input class="previous_btn" type="button" value="Previous" onclick="location.href='{% url 'previousPage' prevPage  %}'"  />
                     {% endif %}
                     {% if pageNumber > 3 %}
                         <div>{{ prevPage3rd }}</div>
@@ -53,9 +58,9 @@
                     <div>{{ nextPage }}</div>
                     <div>{{ nextPage2nd }}</div>
                     <div>{{ nextPage3rd }}</div>
-                    <input type="button" value="nextPage" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
-
-
+                    <input class="next_btn" type="button" value="Next" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
+                </div>
+                {% endif %}
             </nav>
         </nav>
     </body>
