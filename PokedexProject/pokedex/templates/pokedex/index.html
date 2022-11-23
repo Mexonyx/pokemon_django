@@ -5,6 +5,7 @@
         <title>PokeDex</title>
         <link rel="stylesheet" href="{% static 'pokedex/index.css' %}">
         <link rel="stylesheet" href="{% static 'pokedex/listStyle.css' %}">
+        <link rel="stylesheet" href="{% static 'pokedex/pagination.css' %}">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 
@@ -38,7 +39,26 @@
                     </div>
                     {% endfor %}
                 </div>
-        </nav>
+                    {% if pageNumber > 1 %}
+                        <input type="button" value="Previous Page" onclick="location.href='{% url 'previousPage' prevPage  %}'"  />
+                    {% endif %}
+                    {% if pageNumber > 3 %}
+                        <div>{{ prevPage3rd }}</div>
+                    {% endif %}
+                    {% if pageNumber > 2 %}
+                        <div>{{ prevPage2nd }}</div>
+                    {% endif %}
+                    {% if pageNumber > 1 %}
+                        <div>{{ prevPage }}</div>
+                    {% endif %}
+                    <div>{{ pageNumber }} PAGE ACTUELLE</div>
+                    <div>{{ nextPage }}</div>
+                    <div>{{ nextPage2nd }}</div>
+                    <div>{{ nextPage3rd }}</div>
+                    <input type="button" value="nextPage" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
+
+
+            </nav>
         </nav>
 
     </body>
