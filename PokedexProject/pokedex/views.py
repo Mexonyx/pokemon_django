@@ -76,7 +76,7 @@ def detailedPokemon(request, idPokemon):
     return render(request, "pokedex/detailedPokemon.html" , context)
 
 def searchBar(request):
-    url = "https://pokeapi.co/api/v2/pokemon/"
+    url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
     r = requests.get(url)
     jsonRequest = r.json()
 
