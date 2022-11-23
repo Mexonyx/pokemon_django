@@ -7,34 +7,32 @@
         <link rel="stylesheet" href="{% static 'pokedex/listStyle.css' %}">
         <link rel="stylesheet" href="{% static 'pokedex/pagination.css' %}">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-
+        <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@600&display=swap" rel="stylesheet"> 
     </head>
+    
     <body>
-      
-        <nav class="header">
-        <center>
-        <header>
-            <ul>
-                <li><a class="links" href="#user"><button class="equip" type="button">+ Créer une équipe</button></a></li>
-            </ul>
-        </header>
-
-            <div class="logo">
-                <h1> Recherche </h1>
+        <div class="header">           
+            <div class="title"> Pokedex </div>
+            <div class="searchBarTile">
+                <form class="searchBar" action="{% url 'searchPokemon' %}">
+                    <input class="searchInput" type="text" name="search" placeholder="Recherchez un pokemon" value="{{request.GET.title}}">
+                    <button class="btn" type="submit" value="Search"><i class="searchIcon uil-search"></i></button>
+                </form>
+                <div class="buttons" style="margin: 5vh auto 0 auto">
+                    <button class="return_btn" type="submit" onclick="location.href={% url 'pokedex' %}">Retour aux pokemons</button>
+                    <button class="equip_btn" type="button">+ Créer une équipe</button>
+                </div>
             </div>
-            <div class="bar">
-                <input class="searchbar" type="text" title="Search">
-                <a href="#" title="Search Pokemon !"><i class="searchIcon uil-search "></i></a>
-            </div>
-        </nav>
+        </div>
         <nav class="content">
             <nav class="main">
                 <div class="wrapper">
                     {% for pokemon in pokemonList %}
-                    <div><a href="pokedex/detailed/{{pokemon.id}}" style="text-decoration:none;">
-                      {{ pokemon.name }}
-                      <img src="{{pokemon.urlImage}}">
+                    <div class="listCard">
+                        <a href="pokedex/detailed/{{pokemon.id}}" style="text-decoration:none;">
+                            <div class="name">{{ pokemon.name }}</div>
+                            <img src="{{pokemon.urlImage}}">
+                            <div class="typpe">{{ pokemon.type }}</div>
                         </a>
                     </div>
                     {% endfor %}
@@ -60,9 +58,6 @@
 
             </nav>
         </nav>
-
     </body>
-
-
 </html>
 
