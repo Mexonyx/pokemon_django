@@ -37,8 +37,13 @@
                         </a>
                     </div>
                     {% endfor %}
+                    <input type="button" value="Next Page" onclick="location.href='{% url 'nextPage' pageNumber  %}'"  />
+                    <div>{{ pageNumber }}</div>
+                    <input type="button" value="Next Page" onclick="location.href='{% url 'nextPage' pageNumber %}'"  />
                 </div>
-        </nav>
+
+
+            </nav>
         </nav>
 
     </body>
