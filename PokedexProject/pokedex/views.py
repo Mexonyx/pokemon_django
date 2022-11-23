@@ -8,9 +8,12 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-def getListPokemons(pageNumber):
+def getListPokemons(pageNumber=0):
     pagination = (pageNumber-1) * 20
-    url = "https://pokeapi.co/api/v2/pokemon/?offset=" + str(pagination) + "&limit=20"
+    if pagination != -20:
+        url = "https://pokeapi.co/api/v2/pokemon/?offset=" + str(pagination) + "&limit=20"
+    else:
+        url= "https://pokeapi.co/api/v2/pokemon/?limit=151"
     r = requests.get(url)
     jsonRequest = r.json()
 
@@ -76,21 +79,7 @@ def detailedPokemon(request, idPokemon):
     return render(request, "pokedex/detailedPokemon.html" , context)
 
 def searchBar(request):
-    url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
-    r = requests.get(url)
-    jsonRequest = r.json()
-
-    allPokemon = []
-
-    for aPokemon in jsonRequest['results']:
-        urlDetailPokemon = aPokemon['url']
-        resulturlDetail = requests.get(urlDetailPokemon)
-        detailPokemonJson = resulturlDetail.json()
-        allPokemon.append(
-            Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
-                    urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
-                    type=detailPokemonJson['types'][0]['type']['name'], 
-                    )),
+    allPokemon = getListPokemons()
     filteredPokemonList = []
     for pokemon in allPokemon:
         if request.GET.get('search') in pokemon.name:
