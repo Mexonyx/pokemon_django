@@ -76,12 +76,26 @@ def detailedPokemon(request, idPokemon):
     return render(request, "pokedex/detailedPokemon.html" , context)
 
 def searchBar(request):
-    allPokemon = getListPokemons()
+    url = "https://pokeapi.co/api/v2/pokemon/"
+    r = requests.get(url)
+    jsonRequest = r.json()
+
+    allPokemon = []
+
+    for aPokemon in jsonRequest['results']:
+        urlDetailPokemon = aPokemon['url']
+        resulturlDetail = requests.get(urlDetailPokemon)
+        detailPokemonJson = resulturlDetail.json()
+        allPokemon.append(
+            Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
+                    urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
+                    type=detailPokemonJson['types'][0]['type']['name'], 
+                    )),
     filteredPokemonList = []
     for pokemon in allPokemon:
         if request.GET.get('search') in pokemon.name:
             filteredPokemonList.append(pokemon)
-    context = {"pokemonList" : filteredPokemonList}
+    context = {"pokemonList" : filteredPokemonList, "pageNumber": -1}
     return render(request, "pokedex/index.html", context)
 
 def pokemonTeams(request):

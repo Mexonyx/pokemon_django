@@ -118,3 +118,21 @@ input::placeholder {
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  margin:auto;
+}
+
+.previous_btn{
+  
+}.previous_btn:hover{
+  cursor: pointer;
+}
+
+.next_btn{
+
+}.next_btn{
+  cursor: pointer;
+}
