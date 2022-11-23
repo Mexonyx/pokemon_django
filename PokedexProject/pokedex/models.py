@@ -8,4 +8,5 @@ class Pokemon(models.Model):
     urlImage = models.CharField(max_length=500)
     type = models.CharField(max_length=50)
     weight = models.CharField(max_length=50)
+    description = models.CharField(max_length=1000)
     

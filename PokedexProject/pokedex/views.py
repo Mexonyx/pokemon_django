@@ -13,22 +13,31 @@ def getListPokemons():
 
     for aPokemon in jsonRequest['results']:
         urlDetailPokemon = aPokemon['url']
-        result = requests.get(urlDetailPokemon)
-        detailPokemonJson = result.json()
-        listpokemon.append(Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
-                                   urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
-                                   type=detailPokemonJson['types'][0]['type']['name'], 
-                                   weight=detailPokemonJson['weight'])),
-
+        resulturlDetail = requests.get(urlDetailPokemon)
+        detailPokemonJson = resulturlDetail.json()
+        
+        
+        listpokemon.append(
+            Pokemon(id=detailPokemonJson['id'], name=detailPokemonJson['name'],
+                    urlImage=detailPokemonJson['sprites']['other']['official-artwork']['front_default'],
+                    type=detailPokemonJson['types'][0]['type']['name'], 
+                    )),
     return listpokemon
 
 def getOnePokemon(idPokemon):
     url = "https://pokeapi.co/api/v2/pokemon/" + str(idPokemon)
     r = requests.get(url)
     jsonRequest = r.json()
+    
+    urlSpeciesPokemon = jsonRequest['species']['url']
+    resulturlSpeciesPokemon = requests.get(urlSpeciesPokemon)        
+    speciesPokemon = resulturlSpeciesPokemon.json()
+        
     thePokemon = Pokemon(id=idPokemon, name=jsonRequest['species']['name'],
                          urlImage=jsonRequest['sprites']['other']['official-artwork']['front_default'],
-                         type=jsonRequest['types'][0]['type']['name'])
+                         type=jsonRequest['types'][0]['type']['name'], 
+                         weight=jsonRequest['weight'],
+                         description=speciesPokemon['flavor_text_entries'][0]['flavor_text'])
 
     return thePokemon
 

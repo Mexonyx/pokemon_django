@@ -19,38 +19,17 @@ html, body {
   height: 100vh;
 }
 
-ul {
-  list-style-type: none;
-  overflow: hidden;
-}
-
-li {
-  float: right;
-}
-
-li a {
-  color: #000;
-  display: block;
-  text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size:14px;
-}
-li a:hover {
-  text-decoration: underline;
-}
-
-.equip{
-  background-color: #febd4d;
+.equip_btn{
   color: #fff;
-  border:none;
+  border: #209fadc7 solid;
   border-radius:30px;
+  background-color: transparent;
   padding:7px 10px;
   position:relative;
   font-weight:bold;
   transition: 0.5s;
-}.equip:hover{
-  background-color: #ffca6d;
+}.equip_btn:hover{
+  background-color: #209fad28;
   transition: 0.5s ;
   cursor:pointer;
 }
@@ -59,7 +38,7 @@ li a:hover {
   font-family: 'Lilita One', cursive;
   font-size: 5rem;
   color: #fff;
-  margin: 5vh auto 15vh auto;
+  margin: 20vh auto 15vh auto;
 }
 
 .searchBarTile{
@@ -104,7 +83,7 @@ input::placeholder {
   font-size: 1.5vw;
 }
 
-.btn {
+.btn{
   border:none;
   border-radius: 50%;
   text-decoration: none;
@@ -118,8 +97,8 @@ input::placeholder {
   border-radius: 3vw;
   text-decoration: none;
   background-color: #209fadc7;
-  margin: 5vh auto 0 auto;
-  padding: 1vh 1vw;
+  margin: auto 1vw auto 0;
+  padding: 8px 10px;
   width: 12vw;
   font-size: 0.9vw;
   font-weight: 600;

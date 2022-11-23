@@ -10,17 +10,17 @@
     </head>
     
     <body>
-        <div class="header">
-            <ul>
-                <li><a class="links" href="#user"><button class="equip" type="button">+ Créer une équipe</button></a></li>
-            </ul>
+        <div class="header">           
             <div class="title"> Pokedex </div>
             <div class="searchBarTile">
                 <form class="searchBar" action="{% url 'searchPokemon' %}">
                     <input class="searchInput" type="text" name="search" placeholder="Recherchez un pokemon" value="{{request.GET.title}}">
                     <button class="btn" type="submit" value="Search"><i class="searchIcon uil-search"></i></button>
                 </form>
-                <button class="return_btn" type="submit" onclick="location.href={% url 'pokedex' %}">Retour aux pokemons</button>
+                <div class="buttons" style="margin: 5vh auto 0 auto">
+                    <button class="return_btn" type="submit" onclick="location.href={% url 'pokedex' %}">Retour aux pokemons</button>
+                    <button class="equip_btn" type="button">+ Créer une équipe</button>
+                </div>
             </div>
         </div>
         <nav class="content">
@@ -31,7 +31,7 @@
                         <a href="pokedex/detailed/{{pokemon.id}}" style="text-decoration:none;">
                             <div class="name">{{ pokemon.name }}</div>
                             <img src="{{pokemon.urlImage}}">
-                            <div class="name">{{ pokemon.type }}</div>
+                            <div class="typpe">{{ pokemon.type }}</div>
                         </a>
                     </div>
                     {% endfor %}
