@@ -1,0 +1,83 @@
+.img_background{
+    background-color: #101b1f;
+    height:100vh;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;   
+    background: url( './images/134329-Denis-Istomin-painting-lake-forest-cottage-sunrise-lavender-fence-artwork-fantasy-art-sky-sunlight-flowers-plants.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top; 
+    /* background-attachment: fixed;  */
+    display: flex;
+    height:100vh;
+    color:white; 
+}
+
+p{
+    text-transform: capitalize;
+}
+
+.headerDetails{
+    display:flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.pokeTitle{
+    position: absolute;
+    left:0;
+}
+
+.return_btn{
+    position: absolute;
+    right:0;
+    margin: 4vh 4vh 0 0;
+}
+
+.bio{
+    display: flex;
+    flex-direction: row;
+    margin: 35vh auto 10vh auto;
+    width:45%;
+    border-radius: 0.8vw;
+    padding: 2vw;
+    background-color: #4079a8f1;
+    box-shadow: 0 0 0.6vw rgb(67, 67, 67);
+}
+
+.pokeImg{
+    width: 15vw;
+    height:15vw;
+    margin-right: 4vw;
+}
+
+.swipe{
+    display: flex;
+    margin:0 auto;
+}
+
+input{
+    border:none;
+    background-color: #8cdde4ec;
+    color:#101b1f;
+    padding: 0.5vw 1vw;
+    border-radius: 0.8vw;
+    font-weight: 600;
+    font-size: 0.9vw;
+}input:hover{
+    cursor: pointer;
+    background-color: #8cdde4c5;
+}
+
+.next_btn{
+    margin:auto 2vw;
+    cursor: pointer;
+}
+
+.previous_btn{
+    margin:auto 2vw;
+    cursor: pointer;
+}
