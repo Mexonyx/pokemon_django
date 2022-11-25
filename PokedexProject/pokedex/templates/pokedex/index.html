@@ -5,7 +5,6 @@
         <title>PokeDex</title>
         <link rel="stylesheet" href="{% static 'pokedex/index.css' %}">
         <link rel="stylesheet" href="{% static 'pokedex/listStyle.css' %}">
-        <link rel="stylesheet" href="{% static 'pokedex/pagination.css' %}">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@600&display=swap" rel="stylesheet"> 
     </head>
@@ -24,8 +23,8 @@
                 </div>
             </div>
         </div>
-        <nav class="content">
-            <nav class="main">
+        <div class="content">
+            <div class="main">
                 <div class="wrapper">
                     {% for pokemon in pokemonList %}
                     <div class="listCard">
@@ -39,30 +38,45 @@
                     {% endfor %}
                 </div>
 
-                {% if pageNumber != -1 %}
-                <div class="pagination">
+                {% if pageNumber != -1%}
+                    {% if pageNumber <= 7 %}
+                        <div class="pagination">
+                            {% comment %} {% if pageNumber > 3 %}
+                            <div class="number">{{ prevPage3rd }}</div>
+                            {% endif %}
+                            {% if pageNumber > 2 %}
+                            <div class="number">{{ prevPage2nd }}</div>
+                            {% endif %}
+                            {% if pageNumber > 1 %}
+                            <div class="number">{{ prevPage }}</div>
+                            {% endif %} {% endcomment %}
+                            {% comment %} <div class="number">{{ nextPage2nd }}</div>
+                            <div class="number">{{ nextPage3rd }}</div> {% endcomment %}
+                            {% comment %} {% if pageNumber <= 7 %}
+                            <input class="page_btn" type="button" value="Suivant" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
+                            {% endif %} {% endcomment %}
 
-                    {% if pageNumber > 1 %}
-                        <input class="previous_btn" type="button" value="Previous" onclick="location.href='{% url 'previousPage' prevPage  %}'"  />
+                            {% if pageNumber > 1 %}
+                                <input class="page_btn" style="font-size:1vw" type="button" value="Précédent" onclick="location.href='{% url 'previousPage' prevPage  %}'">
+                                <div class="number">{{ prevPage }}</div>
+                            {% endif %}
+                            
+                            <div class="activeNumber number">{{ pageNumber }}</div>
+                            
+                            {% if nextPage != 8 %}
+                                <div class="number">{{ nextPage }}</div>
+                            {% endif %}
+
+
+                            {% if pageNumber < 7%}
+                                <input class="page_btn" type="button" value="Suivant" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
+                            {% endif %}
+
+                            </div>
                     {% endif %}
-                    {% if pageNumber > 3 %}
-                        <div>{{ prevPage3rd }}</div>
-                    {% endif %}
-                    {% if pageNumber > 2 %}
-                        <div>{{ prevPage2nd }}</div>
-                    {% endif %}
-                    {% if pageNumber > 1 %}
-                        <div>{{ prevPage }}</div>
-                    {% endif %}
-                    <div>{{ pageNumber }} PAGE ACTUELLE</div>
-                    <div>{{ nextPage }}</div>
-                    <div>{{ nextPage2nd }}</div>
-                    <div>{{ nextPage3rd }}</div>
-                    <input class="next_btn" type="button" value="Next" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
-                </div>
                 {% endif %}
-            </nav>
-        </nav>
+            </div>
+        </div>
     </body>
 </html>
 

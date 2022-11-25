@@ -96,7 +96,7 @@ input::placeholder {
   border:none;
   border-radius: 3vw;
   text-decoration: none;
-  background-color: #209fadc7;
+  background-color: #4079a8f1;
   margin: auto 1vw auto 0;
   padding: 8px 10px;
   width: 12vw;
@@ -105,7 +105,7 @@ input::placeholder {
   color: white;
 }.return_btn:hover{
   cursor: pointer;
-  background-color: #23b4c4c7;
+  background-color: #4079a8f1;
 }
 
 .content{
@@ -116,23 +116,37 @@ input::placeholder {
 .main{
   margin: 0 auto;
   padding-top: 5%;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
+  display: flex;
+  flex-direction: column;
 }
 
 .pagination{
   display: flex;
   flex-direction: row;
-  margin:auto;
+  margin: 8vh auto 0 auto;
 }
 
-.previous_btn{
-  
-}.previous_btn:hover{
+.page_btn{
+  font-size: 1vw;
+  padding: 0.3vw 0.5vw;
+  background-color:#4079a8f1;
+  color: white;
+  border: none;
+  border-radius: 0.8vw;
+  margin:0 1vw;
+  display: flex;
+  flex-direction: row;
+}.page_btn:hover{
   cursor: pointer;
 }
+.number{
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px; 
+  margin:auto 0.2vw;
+}
 
-.next_btn{
-
-}.next_btn{
-  cursor: pointer;
+.activeNumber{
+  color:#4079a8f1;
 }
