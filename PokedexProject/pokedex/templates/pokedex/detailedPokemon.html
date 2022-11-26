@@ -24,6 +24,15 @@
                     <p class="pokeType">{{pokemon.type}}</p>
                     <p class="pokeWeight">{{pokemon.weight}}</p>
                     <p class="pokeDescr">{{pokemon.description}}</p>
+                    <button onclick="location.href='{% url 'addedPokemon' pokemon.id %}'" type="submit" style="text-decoration:none; background-color:transparent; border:none; cursor:pointer; font-weight:bold; font-family: 'Montserrat', sans-serif;">Ajouter ce pokemon à mon équipe</button>
+                    {% if lengthpokeTeam > 0 %}
+                            {% for pokemon in pokemonTeam %}
+                                <p>{{pokemon.name}}</p>
+                            {% endfor %}
+                            <p>prout</p>
+                        {% else %}
+                            <p>pas de pokemon</p>
+                    {% endif %} 
                 </div>
             </div>
 

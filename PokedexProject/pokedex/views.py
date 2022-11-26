@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
+pokemonTeam = []
 
 def getListPokemons(pageNumber=0):
     pagination = (pageNumber-1) * 20
@@ -45,17 +46,14 @@ def getOnePokemon(idPokemon):
                          type=jsonRequest['types'][0]['type']['name'], 
                          weight=jsonRequest['weight'],
                          description=speciesPokemon['flavor_text_entries'][0]['flavor_text'])
-
     return thePokemon
 
 
 def pokedex(request, pageNumber=1):
     pokemonList = getListPokemons(pageNumber)
-
     prevPage = pageNumber-1
     prevPage2nd = pageNumber - 2
     prevPage3rd = pageNumber - 3
-
     nextPage = pageNumber + 1
     nextPage2nd = pageNumber + 2
     nextPage3rd = pageNumber + 3
@@ -69,9 +67,7 @@ def pokedex(request, pageNumber=1):
             #    "prevPage2nd": prevPage2nd,
             #    "prevPage3rd": prevPage3rd
                }
-
     return render(request, 'pokedex/index.html', context)
-
 
 def detailedPokemon(request, idPokemon):
     thePokemon = getOnePokemon(idPokemon)
@@ -91,13 +87,18 @@ def searchBar(request):
     return render(request, "pokedex/index.html", context)
 
 def pokemonTeams(request):
-    print("ueheuhduedh")
     return render(request, 'pokedex/myTeams.html')
 
+def addPokemon(request, idPokemon):
+    thePokemon = getOnePokemon(idPokemon)
+    pokemonTeam.append(thePokemon)
+    lengthpokeTeam = len(pokemonTeam)
+    
+    context = {"pokemonTeam" : pokemonTeam, "idPokemon" : idPokemon, "lengthpokeTeam" : lengthpokeTeam}
+    return detailedPokemon(request, idPokemon)
 
 def createTeam(request):
     listPokemon = getListPokemons()
-
+    
     context = {"pokemonList": listPokemon}
-
     return render(request, 'pokedex/createTeam.html', context)
