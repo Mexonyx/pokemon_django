@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
+
 def getListPokemons(pageNumber=0):
     pagination = (pageNumber-1) * 20
     if pagination != -20:
@@ -90,6 +91,7 @@ def searchBar(request):
     return render(request, "pokedex/index.html", context)
 
 def pokemonTeams(request):
+    print("ueheuhduedh")
     return render(request, 'pokedex/myTeams.html')
 
 

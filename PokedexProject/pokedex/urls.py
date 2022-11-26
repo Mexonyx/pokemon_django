@@ -5,11 +5,11 @@ from . import views
 urlpatterns = [
     path('', views.pokedex, name="pokedex"),
 
-    path('pokedex/detailed/<int:idPokemon>', views.detailedPokemon, name ="detailedPokemon"),
+    path('detailed/<int:idPokemon>', views.detailedPokemon, name ="detailedPokemon"),
     path('searchBar', views.searchBar, name="searchPokemon"),
     path('page/<int:pageNumber>', views.pokedex, name="previousPage"),
     path('page/<int:pageNumber>', views.pokedex, name="nextPage"),
-    path('teams/', views.pokemonTeams, name="teams")
+    path('teams/', views.pokemonTeams, name="teams"),
 ]
 
 
