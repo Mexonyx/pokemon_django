@@ -9,4 +9,11 @@ class Pokemon(models.Model):
     type = models.CharField(max_length=50)
     weight = models.CharField(max_length=50)
     description = models.CharField(max_length=1000)
-    
+
+class Team(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=30)
+    pokemons = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.name
