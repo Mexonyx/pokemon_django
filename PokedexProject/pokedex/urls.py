@@ -9,6 +9,7 @@ urlpatterns = [
     path('searchBar', views.searchBar, name="searchPokemon"),
     path('page/<int:pageNumber>', views.pokedex, name="previousPage"),
     path('page/<int:pageNumber>', views.pokedex, name="nextPage"),
+    path('teams/', views.pokemonTeams, name="teams")
 ]
 
 

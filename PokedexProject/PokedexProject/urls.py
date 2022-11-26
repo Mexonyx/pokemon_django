@@ -19,6 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pokedex/', include('pokedex.urls')),
-    path('teams/', include('teams.urls'))
 ]
 
