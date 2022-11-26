@@ -16,8 +16,8 @@
     
     
 ## Page d'accueil
-
-  - Vous arrivez sur la page d'accueil du Pokédex, vous avez la possibilité d'effectuer une recherche sur un pokémon.
+  - Pour accéder à la page d'accueil, veuillez ajouter dans l'url de la page web l'extension "/pokedex/"
+  - Vous arrivez sur la page d'accueil du Pokédex, vous avez la possibilité d'effectuer une recherche sur un pokémon (par son nom).
   - Plus bas en défilant cette page il est possible de consulter la liste des pokémons.
       - Chaque pokémon est nommé et présenté d'une image dans une cellule de la liste.
       - Le type (feu, eau, eclair, etc..) est affiché.
@@ -34,3 +34,13 @@
   - Sur la page d'accueil, il existe un deuxieme bouton sous la barre de recherche qui s'intitule "Créer une équipe".
   - Si vous cliquez sur le bouton vous êtes redirigés sur la page de création d'une équipe de pokémon.
   ###### Il s'agit d'une fonctionnalité que nous n'avons pas encore pu implémenter dans l'application.
+  
+  <sub>IDE : Visual Studio Code et PyCharm</sub>
+  
+  <sub>Langages : Python Django</sub>
+  
+  <sub>Outil de gestion de projet : Trello</sub>
+  
+  <sub>Outil de communication : Discord</sub>
+  
+  <sub>Outil de sauvegarde du code : GitHub</sub>
