@@ -5,7 +5,6 @@ from django.urls import reverse
 import requests
 from django.core.paginator import Paginator
 
-
 # Create your views here.
 
 def getListPokemons(pageNumber=0):
@@ -62,12 +61,12 @@ def pokedex(request, pageNumber=1):
 
     context = {"pokemonList": pokemonList,
                "pageNumber": pageNumber,
-               "nextPage": nextPage,
-               "nextPage2nd": nextPage2nd,
-               "nextPage3rd": nextPage3rd,
+                "nextPage": nextPage,
+            #    "nextPage2nd": nextPage2nd,
+            #    "nextPage3rd": nextPage3rd,
                "prevPage": prevPage,
-               "prevPage2nd": prevPage2nd,
-               "prevPage3rd": prevPage3rd
+            #    "prevPage2nd": prevPage2nd,
+            #    "prevPage3rd": prevPage3rd
                }
 
     return render(request, 'pokedex/index.html', context)
@@ -75,7 +74,10 @@ def pokedex(request, pageNumber=1):
 
 def detailedPokemon(request, idPokemon):
     thePokemon = getOnePokemon(idPokemon)
-    context = {"pokemon": thePokemon}
+    nextPokemon = idPokemon + 1
+    previousPokemon = idPokemon - 1
+    
+    context = {"pokemon": thePokemon, "nextPokemon": nextPokemon, "previousPokemon": previousPokemon}
     return render(request, "pokedex/detailedPokemon.html" , context)
 
 def searchBar(request):
