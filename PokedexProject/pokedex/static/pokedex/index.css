@@ -21,7 +21,7 @@ html, body {
 
 .equip_btn{
   color: #fff;
-  border: #209fadc7 solid;
+  border: #62ccd2f2 solid;
   border-radius:30px;
   background-color: transparent;
   padding:7px 10px;
@@ -96,7 +96,7 @@ input::placeholder {
   border:none;
   border-radius: 3vw;
   text-decoration: none;
-  background-color: #4079a8f1;
+  background-color: #62ccd2f2;
   margin: auto 1vw auto 0;
   padding: 8px 10px;
   width: 12vw;
@@ -105,7 +105,7 @@ input::placeholder {
   color: white;
 }.return_btn:hover{
   cursor: pointer;
-  background-color: #4079a8f1;
+  background-color: #64e5ecf2;
 }
 
 .content{
@@ -130,7 +130,7 @@ input::placeholder {
 .page_btn{
   font-size: 1vw;
   padding: 0.3vw 0.5vw;
-  background-color:#4079a8f1;
+  background-color:#62ccd2f2;
   color: white;
   border: none;
   border-radius: 0.8vw;

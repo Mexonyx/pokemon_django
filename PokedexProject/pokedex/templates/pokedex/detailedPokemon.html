@@ -14,7 +14,7 @@
         <div class="container" style="background-color:#209fad28">
             <div class="headerDetails">
                 <p classs="pokeTitle" style="position: absolute;left:0; margin: 4vh 0 0 4vh;">Pokedex</p>
-                <button class="return_btn" type="submit" onclick="location.href={% url 'pokedex' %}">Retour aux pokemons</button>
+                <button class="return_btn_details" type="submit" onclick="location.href={% url 'pokedex' %}">Retour aux pokemons</button>
             </div>
             
             <div class="bio">
@@ -24,15 +24,7 @@
                     <p class="pokeType">{{pokemon.type}}</p>
                     <p class="pokeWeight">{{pokemon.weight}}</p>
                     <p class="pokeDescr">{{pokemon.description}}</p>
-                    <button onclick="location.href='{% url 'addedPokemon' pokemon.id %}'" type="submit" style="text-decoration:none; background-color:transparent; border:none; cursor:pointer; font-weight:bold; font-family: 'Montserrat', sans-serif;">Ajouter ce pokemon à mon équipe</button>
-                    {% if lengthpokeTeam > 0 %}
-                            {% for pokemon in pokemonTeam %}
-                                <p>{{pokemon.name}}</p>
-                            {% endfor %}
-                            <p>prout</p>
-                        {% else %}
-                            <p>pas de pokemon</p>
-                    {% endif %} 
+                    <button class="addPoke" onclick="location.href='{% url 'addedPokemon' pokemon.id %}'" type="submit">+ Ajouter ce pokemon à mon équipe</button>
                 </div>
             </div>
 

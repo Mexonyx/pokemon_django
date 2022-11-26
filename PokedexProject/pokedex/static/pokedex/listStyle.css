@@ -6,7 +6,7 @@
 }
 
 .listCard {
-    background-color: #409aa8f1;
+    background-color: #649ed2c2;
     border-radius: 5%;
     text-align: center;
     padding : 1.5vw;
@@ -33,16 +33,16 @@
 }
 
 .name{
-  color: #29c6d7;
+  color: #fafafa;
   font-size:1.4vw;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
 }
 
 .typpe{
-  color:#101b1f;
+  color:#fdfdfd;
   text-transform: capitalize;
-  background-color: #29c6d7 ;
+  background-color: #62ccd2f2 ;
   border-radius: 0.6vw;
   padding: 0.3vw;
   margin: auto;

@@ -31,21 +31,47 @@ p{
     left:0;
 }
 
-.return_btn{
+.return_btn_details{
+    border:none;
+    border-radius: 3vw;
+    text-decoration: none;
     position: absolute;
     right:0;
     margin: 4vh 4vh 0 0;
+    background-color: #d093bd;
+    padding: 8px 10px;
+    width: 12vw;
+    font-size: 0.9vw;
+    font-weight: 600;
+    color: white;
+}.return_btn:hover{
+    cursor: pointer;
+    background-color: #f1abdb;
 }
 
 .bio{
     display: flex;
     flex-direction: row;
-    margin: 35vh auto 10vh auto;
+    margin: 30vh auto 10vh auto;
     width:45%;
     border-radius: 0.8vw;
     padding: 2vw;
-    background-color: #4079a8f1;
+    background-color: #4075a8e0;
     box-shadow: 0 0 0.6vw rgb(67, 67, 67);
+}
+
+.addPoke{
+    text-decoration:none; 
+    background-color:#73d1ff; 
+    border-radius: 2vw;
+    border:none; 
+    cursor:pointer;
+    font-size: 0.8vw; 
+    font-weight:bold; 
+    font-family: 'Montserrat', sans-serif;
+    padding: 8px 10px;
+}.addPoke:hover{
+    background-color:#63b5de; 
 }
 
 .pokeImg{
@@ -61,15 +87,15 @@ p{
 
 input{
     border:none;
-    background-color: #8cdde4ec;
-    color:#101b1f;
+    background-color: #d093bd;
+    color:#feffff;
     padding: 0.5vw 1vw;
     border-radius: 0.8vw;
     font-weight: 600;
     font-size: 0.9vw;
 }input:hover{
     cursor: pointer;
-    background-color: #8cdde4c5;
+    background-color: #d093bd;
 }
 
 .next_btn{
