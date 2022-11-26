@@ -11,7 +11,7 @@
     
     <body>
         <div class="header">           
-            <div class="title"> Pokedex </div>
+            <div class="title">Pokedex</div>
             <div class="searchBarTile">
                 <form class="searchBar" action="{% url 'searchPokemon' %}">
                     <input class="searchInput" type="text" name="search" placeholder="Recherchez un pokemon" value="{{request.GET.title}}">
@@ -27,35 +27,19 @@
             <div class="main">
                 <div class="wrapper">
                     {% for pokemon in pokemonList %}
-                    <div class="listCard">
-                        <button onclick="location.href='{% url 'detailedPokemon' pokemon.id %}'" style="text-decoration:none; background-color:transparent; border:none; cursor:pointer; font-weight:bold; font-family: 'Montserrat', sans-serif;
-                        ">
-                            <div class="name">{{ pokemon.name }}</div>
-                            <img src="{{pokemon.urlImage}}">
-                            <div class="typpe">{{ pokemon.type }}</div>
-                        </a>
-                    </div>
+                        <div class="listCard">
+                            <button class="clickPokemon" onclick="location.href='{% url 'detailedPokemon' pokemon.id %}'">
+                                <div class="name">{{ pokemon.name }}</div>
+                                <img src="{{pokemon.urlImage}}">
+                                <div class="typpe">{{ pokemon.type }}</div>
+                            </button>
+                        </div>
                     {% endfor %}
                 </div>
 
                 {% if pageNumber != -1%}
                     {% if pageNumber <= 7 %}
                         <div class="pagination">
-                            {% comment %} {% if pageNumber > 3 %}
-                            <div class="number">{{ prevPage3rd }}</div>
-                            {% endif %}
-                            {% if pageNumber > 2 %}
-                            <div class="number">{{ prevPage2nd }}</div>
-                            {% endif %}
-                            {% if pageNumber > 1 %}
-                            <div class="number">{{ prevPage }}</div>
-                            {% endif %} {% endcomment %}
-                            {% comment %} <div class="number">{{ nextPage2nd }}</div>
-                            <div class="number">{{ nextPage3rd }}</div> {% endcomment %}
-                            {% comment %} {% if pageNumber <= 7 %}
-                            <input class="page_btn" type="button" value="Suivant" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
-                            {% endif %} {% endcomment %}
-
                             {% if pageNumber > 1 %}
                                 <input class="page_btn" style="font-size:1vw" type="button" value="Précédent" onclick="location.href='{% url 'previousPage' prevPage  %}'">
                                 <div class="number">{{ prevPage }}</div>
@@ -67,12 +51,10 @@
                                 <div class="number">{{ nextPage }}</div>
                             {% endif %}
 
-
                             {% if pageNumber < 7%}
                                 <input class="page_btn" type="button" value="Suivant" onclick="location.href='{% url 'nextPage' nextPage %}'"  />
                             {% endif %}
-
-                            </div>
+                        </div>
                     {% endif %}
                 {% endif %}
             </div>
